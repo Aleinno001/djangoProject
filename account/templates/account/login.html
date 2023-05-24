@@ -5,5 +5,31 @@
 {% block h1 %}Login{% endblock %}
 
 {% block content %}
-    
+    <form method="POST" action="">
+
+        {% csrf_token %}
+        <div class="container">
+            <div class="control">
+                <div class="input-group mb-5">
+                    {{ form.username.label }}
+                    {{ form.username }}
+                </div>
+                <div class="input-group mb-5">
+                    {{ form.password1.label }}
+                    {{ form.password1 }}
+                </div>
+                <div class="input-group mb-5">
+                    {{ form.password2.label }}
+                    {{ form.password2 }}
+                </div>
+            </div>
+        </div>
+
+        <input class="button is-success mt-6" type="submit" value="Login">
+    </form>
+    <div class="mt-4">
+        <div class="d-flex justify-content-center links">
+            Don't have an account? <a href="{% url 'signup' %}" class="ml-2">Login</a>
+        </div>
+    </div>
 {% endblock %}
