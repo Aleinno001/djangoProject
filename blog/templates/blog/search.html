@@ -8,11 +8,9 @@
         <!-- START ARTICLE FEED -->
         <section class="articles">
             <div class="column is-8 is-offset-2">
-            <p class="title">
-                <h1>
+                <h1 class="title">
                     Search results for "{{ query }}" ({{ posts|length }})
-            </h1>
-            </p>
+                </h1>
                 <!-- START ARTICLE -->
                 {% for post in posts %}
                     <div class="card article">
@@ -33,7 +31,7 @@
                             </a>
                         </div>
                     </div>
-                    {% empty %}
+                {% empty %}
                     <div class="content">
                         <p>No result for the given query...</p>
                     </div>

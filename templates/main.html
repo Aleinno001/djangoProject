@@ -27,6 +27,19 @@
         </div>
         <div id="navbarMenu" class="navbar-menu">
             <div class="navbar-end">
+                <div class="navbar-item">
+                    <form method="get" action="{% url 'search' %}">
+                        <div class="field has-addons">
+                            <div class="control">
+                                <input class="input" type="text" name="query" placeholder="Search">
+                            </div>
+                            <div class="control">
+                                <button class="button is-info">
+                                    Search
+                                </button>
+                            </div>
+                        </div>
+                </div>
                 <a class="navbar-item is-active" href="/">
                     Home
                 </a>
