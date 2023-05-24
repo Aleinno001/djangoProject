@@ -17,22 +17,24 @@
             <div class="column is-8 is-offset-2">
                 <!-- START ARTICLE -->
                 {% for post in posts %}
-                <div class="card article">
-                    <div class="card-content">
-                        <div class="media">
-                            <div class="media-content has-text-centered">
-                                <p class="title article-title">{{ post.title }}</p>
-                                <div class="tags has-addons level-item">
-                                    <span class="tag is-rounded is-info">{{ post.author }}</span>
-                                    <span class="tag is-rounded">Created at {{ post.created|date:'M-d-Y' }}</span>
+                    <div class="card article">
+                        <div class="card-content">
+                            <a href="{% url 'post_detail' post.slug %}">
+                                <div class="media">
+                                    <div class="media-content has-text-centered">
+                                        <p class="title article-title">{{ post.title }}</p>
+                                        <div class="tags has-addons level-item">
+                                            <span class="tag is-rounded is-info">{{ post.author }}</span>
+                                            <span class="tag is-rounded">Created at {{ post.created|date:'M-d-Y' }}</span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="content article-intro">
-                            {{ post.intro }}
+                                <div class="content article-intro">
+                                    {{ post.intro }}
+                                </div>
+                            </a>
                         </div>
                     </div>
-                </div>
                 {% endfor %}
                 <!-- END ARTICLE -->
             </div>

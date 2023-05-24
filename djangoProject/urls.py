@@ -21,5 +21,6 @@ from MainApp.views import homepage
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',homepage,name='home'),
+    path('', include('blog.urls')),
+    path('', homepage, name='home'),
 ]
