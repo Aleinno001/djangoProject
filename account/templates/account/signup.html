@@ -31,6 +31,7 @@
 
         <input class="button is-success mt-6" type="submit" value="Sign Up">
     </form>
+    {{ forms.errors }}
     <div class="mt-4">
         <div class="d-flex justify-content-center links">
             Already have an account? <a href="{% url 'login' %}" class="ml-2">Login</a>

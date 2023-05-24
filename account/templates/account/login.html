@@ -18,15 +18,14 @@
                     {{ form.password1.label }}
                     {{ form.password1 }}
                 </div>
-                <div class="input-group mb-5">
-                    {{ form.password2.label }}
-                    {{ form.password2 }}
-                </div>
             </div>
         </div>
 
         <input class="button is-success mt-6" type="submit" value="Login">
     </form>
+    {% for message in messages %}
+        <p class="message mt-2">{{ message }}</p>
+    {% endfor %}
     <div class="mt-4">
         <div class="d-flex justify-content-center links">
             Don't have an account? <a href="{% url 'signup' %}" class="ml-2">Login</a>
