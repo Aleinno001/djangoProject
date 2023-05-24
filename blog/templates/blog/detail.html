@@ -11,6 +11,9 @@
                     <div class="card-content">
                         <div class="media">
                             <div class="media-content has-text-centered">
+                                <div>
+                                    <p><small>Category: <a href="{% url 'category_detail' post.category.slug %}">{{ post.category }}</a></small></p>
+                                </div>
                                 <p class="title article-title">{{ post.title }}</p>
                                 <div class="tags has-addons level-item">
                                     <span class="tag is-rounded is-info">{{ post.author }}</span>
@@ -24,11 +27,12 @@
                         <div class="content article-body">
                             {{ post.body|safe }}
                         </div>
+
                         <hr>
                         <div class="content article-comments">
                             <h2 class="subtitle is-4">Comments</h2>
 
-                            <form method="post">
+                            <form method="post" class="mb-6">
 
                                 {% csrf_token %}
 
@@ -52,7 +56,8 @@
                                                 <br>
                                                 {{ comment.body }}
                                                 <br>
-                                                <small><a>Like</a> · <a>Reply</a> · {{ comment.created|date:'M-d-Y' }}</small>
+                                                <small><a>Like</a> · <a>Reply</a> · {{ comment.created|date:'M-d-Y' }}
+                                                </small>
                                             </p>
                                         </div>
                                     </div>
