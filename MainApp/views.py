@@ -7,7 +7,7 @@ from blog.models import Post
 # Create your views here.
 
 def homepage(request):
-    posts = Post.objects.all()
+    posts = Post.objects.filter(status=Post.ACTIVE)
     return render(request, 'MainApp/home.html', {'posts': posts})
 
 

@@ -1,6 +1,6 @@
 {% extends 'main.html' %}
 
-{% block title %}{{ category.name }} | {% endblock %}
+{% block title %}Search | {% endblock %}
 
 {% block content %}
 
@@ -8,6 +8,11 @@
         <!-- START ARTICLE FEED -->
         <section class="articles">
             <div class="column is-8 is-offset-2">
+            <p class="title">
+                <h1>
+                    Search results for "{{ query }}" ({{ posts|length }})
+            </h1>
+            </p>
                 <!-- START ARTICLE -->
                 {% for post in posts %}
                     <div class="card article">
@@ -30,7 +35,7 @@
                     </div>
                     {% empty %}
                     <div class="content">
-                        <p>No posts int his category yet...</p>
+                        <p>No result for the given query...</p>
                     </div>
                 {% endfor %}
                 <!-- END ARTICLE -->
