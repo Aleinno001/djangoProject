@@ -59,11 +59,14 @@
                             Login
                         </a>
                         <hr class="navbar-divider">
-                        <div class="navbar-item">
-                            Logout
+                        <div class="navbar-item is-active">
+                            <a href="logout/">
+                                Logout
+                            </a>
                         </div>
                     </div>
                 </div>
+                <span class="navbar-item">Hello, {{ request.user }}</span>
             </div>
         </div>
     </div>
