@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.views import generic
 
+from blog.models import Post
 
 # Create your views here.
 
 def homepage(request):
-    return render(request, 'MainApp/home.html')
+    posts = Post.objects.all()
+    return render(request, 'MainApp/home.html', {'posts': posts})
