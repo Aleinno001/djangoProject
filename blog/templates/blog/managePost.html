@@ -1,0 +1,46 @@
+{% extends 'main.html' %}
+
+{% block title %}Manage Posts of {{ request.user }} | {% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <!-- START ARTICLE FEED -->
+        <section class="articles">
+            <div class="column is-8 is-offset-2">
+                <h1 class="title">
+                    {{ request.user }}'s posts
+                </h1>
+                <!-- START ARTICLE -->
+                {% for post in posts %}
+                    <div class="card article">
+                        <div class="card-content">
+                            <a href="{% url 'post_detail' post.category.slug  post.slug %}">
+                                <div class="media">
+                                    <div class="media-content has-text-centered">
+                                        <p class="title article-title">{{ post.title }}</p>
+                                        <div class="tags has-addons level-item">
+                                            <span class="tag is-rounded is-info">{{ post.author }}</span>
+                                            <span class="tag is-rounded">Created at {{ post.created|date:'M-d-Y' }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="content article-intro">
+                                    {{ post.intro }}
+                                </div>
+                            </a>
+                            <a href="{% url 'delete' post.id %}">
+                                <input class="button mt-4" type="submit" value="Delete post">
+                            </a>
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="content">
+                        <p>No posts for {{ request.user }} yet...</p>
+                    </div>
+                {% endfor %}
+                <!-- END ARTICLE -->
+            </div>
+        </section>
+    </div>
+{% endblock %}
