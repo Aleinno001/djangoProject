@@ -12,7 +12,9 @@
                         <div class="media">
                             <div class="media-content has-text-centered">
                                 <div>
-                                    <p><small>Category: <a href="{% url 'category_detail' post.category.slug %}">{{ post.category }}</a></small></p>
+                                    <p><small>Category: <a
+                                            href="{% url 'category_detail' post.category.slug %}">{{ post.category }}</a></small>
+                                    </p>
                                 </div>
                                 <p class="title article-title">{{ post.title }}</p>
                                 <div class="tags has-addons level-item">
@@ -36,7 +38,13 @@
 
                                 {% csrf_token %}
 
-                                {{ form.as_p }}
+                                <label>
+                                    <input type="text" class="form-control" name="name" value="{{ request.user }}" style="visibility: hidden">
+                                </label>
+
+                                <br>
+
+                                {{ form.body }}
 
                                 <div class="field">
                                     <div class="control">
