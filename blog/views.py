@@ -9,7 +9,10 @@ from .forms import CommentForm
 # Create your views here.
 
 def detail(request, category_slug, slug):
-    post = get_object_or_404(Post, slug=slug, status=Post.ACTIVE)
+    if request.user.is_authenticated is False:
+        post = get_object_or_404(Post, slug=slug, status=Post.ACTIVE)
+    else:
+        post = get_object_or_404(Post, slug=slug)
 
     if request.method == 'POST' and request.user.is_authenticated:
         form = CommentForm(request.POST)
@@ -51,6 +54,8 @@ def managePost(request):
 
 def savePost(request, postid):
     pass
+
+
 # post = Post.objects.get(pk=id)
 # you can do this for as many fields as you like
 # here I asume you had a form with input like <input type="text" name="name"/>
@@ -64,3 +69,7 @@ def delete(request, postid):
     post = Post.objects.get(pk=postid)
     post.delete()
     return redirect('managePost')
+
+
+def createPost(request):
+    return render(request, 'blog/createPost.html')

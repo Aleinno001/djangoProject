@@ -30,7 +30,8 @@
                                 </div>
                             </a>
                             <a href="{% url 'delete' post.id %}">
-                                <input class="button mt-4" type="submit" value="Delete post">
+                                <input class="button mt-4" type="submit"
+                                       style="background-color: indianred; color: white" value="DELETE">
                             </a>
                         </div>
                     </div>
@@ -40,6 +41,11 @@
                     </div>
                 {% endfor %}
                 <!-- END ARTICLE -->
+                <div class="column">
+                    <a href="/manage-post/create-post/">
+                        <input class="button is-success mt-4" type="submit" value="ADD POST">
+                    </a>
+                </div>
             </div>
         </section>
     </div>
