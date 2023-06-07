@@ -3,5 +3,38 @@
 {% block title %}Manage Posts of {{ request.user }} | {% endblock %}
 
 {% block content %}
-    <h1 class="title">BLONDY</h1>
+    <h1 class="title">Post creation</h1>
+    <div class="content article">
+
+        <form method="post" class="mb-6">
+
+            {% csrf_token %}
+
+            <h2 class="subtitle">Category</h2>
+            {{ form.category }}
+
+            <br>
+
+            <h2 class="subtitle">Title</h2>
+            {{ form.title }}
+
+            <br>
+
+            <h2 class="subtitle">Intro</h2>
+            {{ form.intro }}
+
+            <br>
+
+            <h2 class="subtitle">Body</h2>
+            {{ form.body }}
+
+            <br>
+
+            <div class="field">
+                <div class="control">
+                    <button class="button is-success">Submit post</button>
+                </div>
+            </div>
+        </form>
+    </div>
 {% endblock %}

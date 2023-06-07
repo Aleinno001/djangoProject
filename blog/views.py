@@ -3,7 +3,7 @@ from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 
 from .models import Post, Category
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
 
 
 # Create your views here.
@@ -72,4 +72,22 @@ def delete(request, postid):
 
 
 def createPost(request):
-    return render(request, 'blog/createPost.html')
+    if request.method == 'POST' and request.user.is_authenticated:
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.status = Post.ACTIVE
+            post.slug = post.title.replace(' ', '-')
+            post.save()
+            return redirect('managePost')
+
+        else:
+            return redirect('managePost')
+    else:
+        if request.method == 'POST' and request.user.is_authenticated is False:
+            return redirect('loginPage')
+
+    form = PostForm()
+
+    return render(request, 'blog/createPost.html', {'form': form})
